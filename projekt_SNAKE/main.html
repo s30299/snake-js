@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Snake Game</title>
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body>
+<div class="game-container">
+  <h1 class="score">Punkty: <span id="score">0</span></h1>
+  <h2>Maksymalny wynik: <span id="max-score">0</span></h2>
+
+
+  <canvas id="game-board" tabindex="0"></canvas>
+
+  <div class="controls">
+    <button id="start-btn">Start</button>
+    <button id="stop-btn">Stop</button>
+    <button id="restart-btn">Restart</button>
+  </div>
+  <div class="touch-controls">
+    <div class="row">
+      <div></div>
+      <button data-dir="ArrowUp" aria-label="W">⬆</button>
+      <div></div>
+    </div>
+    <div class="row">
+      <button data-dir="ArrowLeft" aria-label="A">⬅</button>
+
+      <button data-dir="ArrowRight" aria-label="D">➡</button>
+    </div>
+    <div class="row">
+      <div></div>
+      <button data-dir="ArrowDown" aria-label="S">⬇</button>
+      <div></div>
+    </div>
+  </div>
+</div>
+
+
+<script type="module" src="scripts/game_init.js"></script>
+</body>
+</html>
