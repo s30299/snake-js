@@ -1,9 +1,10 @@
 // game_init.js
-import { snake, direction, moveSnake, setDirection, resetSnake } from './snake.js';
+import {snake, direction, moveSnake, setDirection, resetSnake, getNextHead} from './snake.js';
 import { apple, repositionApple } from './apple.js';
 import { draw } from './render.js';
 import {gameState, tileCount} from './config.js';
 import './controls.js';
+import {isOnSnake} from "./utils.js";
 
 const keys = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'];
 
@@ -37,12 +38,14 @@ function gameLoop() {
     checkBestScore();
     if (gameState.gameOver) return;
 
-    const newHead = { x: snake[0].x + direction.x, y: snake[0].y + direction.y };
+    // const newHead = { x: snake[0].x + direction.x, y: snake[0].y + direction.y };
+    const newHead=getNextHead();
 
     if (
         newHead.x < 0 || newHead.x >= tileCount ||
         newHead.y < 0 || newHead.y >= tileCount ||
-        snake.some(segment => segment.x === newHead.x && segment.y === newHead.y)
+        // snake.some(segment => segment.x === newHead.x && segment.y === newHead.y)
+        isOnSnake(newHead)
     ) {
         gameState.gameOver = true;
         stopGame();
@@ -66,7 +69,7 @@ function gameLoop() {
 }
 
 export function startGame() {
-    if (gameState.timeoutId !== null) return; 
+    if (gameState.timeoutId !== null) return;
 
     gameState.gameOver = false;
     updateMaxScoreDisplay();
