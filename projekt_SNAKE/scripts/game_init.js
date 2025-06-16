@@ -2,7 +2,7 @@
 import { snake, direction, moveSnake, setDirection, resetSnake } from './snake.js';
 import { apple, repositionApple } from './apple.js';
 import { draw } from './render.js';
-import { gameState } from './config.js';
+import {gameState, tileCount} from './config.js';
 import './controls.js';
 
 const keys = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'];
@@ -40,8 +40,8 @@ function gameLoop() {
     const newHead = { x: snake[0].x + direction.x, y: snake[0].y + direction.y };
 
     if (
-        newHead.x < 0 || newHead.x >= 20 ||
-        newHead.y < 0 || newHead.y >= 20 ||
+        newHead.x < 0 || newHead.x >= tileCount ||
+        newHead.y < 0 || newHead.y >= tileCount ||
         snake.some(segment => segment.x === newHead.x && segment.y === newHead.y)
     ) {
         gameState.gameOver = true;
@@ -66,7 +66,7 @@ function gameLoop() {
 }
 
 export function startGame() {
-    if (gameState.timeoutId !== null) return; // już działa
+    if (gameState.timeoutId !== null) return; 
 
     gameState.gameOver = false;
     updateMaxScoreDisplay();
