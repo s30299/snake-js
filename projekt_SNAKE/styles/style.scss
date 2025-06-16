@@ -60,12 +60,12 @@ body {
   }
 }
 
-// Domyślnie ukryj przyciski dotykowe
+
 .touch-controls {
   display: none;
 }
 
-// Mobile (poniżej 600px)
+
 @media (max-width: 599px) {
   .touch-controls {
     display: flex;
@@ -101,11 +101,10 @@ body {
       }
 
       div {
-        visibility: hidden; // puste sloty dla wyrównania
+        visibility: hidden;
       }
     }
 
-    // Ustawienie konkretnych wierszy
     .row:nth-child(1) {
       justify-content: center;
     }
